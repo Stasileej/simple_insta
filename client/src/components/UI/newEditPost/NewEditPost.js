@@ -10,7 +10,7 @@ import { useMemo } from 'react';
 
 const NewEditPost = ({ type }) => {
   const postType = usePostType();
-
+  
   const header = useMemo(() => {
     if (type === TYPE_POST_NEW) {
       return 'Create new post';

@@ -38,6 +38,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (isAuthorized) {
       localStorage.setItem(AUTH_USER, loginInput);
+      dispatch(authActions.login(loginInput));
       setIsAuthorized(false);
       setLoginInput('');
     }
