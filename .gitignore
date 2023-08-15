@@ -27,5 +27,5 @@
 /server/.idea
 
 /server/public/*
-server/db/tables/comment.json
-server/db/tables/post.json
+/server/db/tables/comment.json
+/server/db/tables/post.json
