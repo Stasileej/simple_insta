@@ -1,20 +1,20 @@
 import './App.css';
 
-import { Route, Routes } from 'react-router';
-import { useNavigate } from 'react-router';
 import { useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 import Login from './components/pages/login/Login';
 import MainPage from './components/pages/mainPage/MainPage';
 import Header from './components/UI/header/Header';
 import Logout from './components/pages/logout/Logout';
 import NotFound from './components/pages/notFound/NotFound';
+import { authUserSelector } from './components/selectors/selectors';
 
-import { useAuthUser } from './components/hooks/selectors';
 import { routes } from './components/data/routes';
 
 function App() {
-  const authUser = useAuthUser();
+  const authUser = useSelector(authUserSelector);
   const navigate = useNavigate();
 
   useEffect(() => {

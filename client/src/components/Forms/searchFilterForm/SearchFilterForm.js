@@ -1,15 +1,15 @@
 import classes from './SearchFilterForm.module.css';
 
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { allPostsActions } from '../../redux/allPostsSlice';
 import { paginatorHidingActions } from './../../redux/paginatorHidingSlice';
 import Form from '../../UI/dumbComponents/Form';
 import Input from '../../UI/dumbComponents/Input';
 import { searchPostsFetch } from '../../data/requestsAPI';
-import { useCurrentPage } from '../../hooks/selectors';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+import { currentPageSelector } from '../../selectors/selectors';
 
 const formData = {
   inputType: `text`,
@@ -19,7 +19,8 @@ const formData = {
 const SearchFilterForm = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const currentPage = useCurrentPage();
+  const currentPage = useSelector(currentPageSelector);
+  
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();

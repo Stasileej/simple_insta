@@ -1,18 +1,18 @@
 import classes from './NewEditPostBtn.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { modalActions } from '../../redux/modalSlice';
 import { postTypeActions } from '../../redux/postTypeSlice';
 
-import { useAuthUser } from '../../hooks/selectors';
-import { useCallback } from 'react';
 import Button from '../../UI/dumbComponents/Button';
+import { authUserSelector } from '../../selectors/selectors';
 
 const btnText = 'New Posts';
 
 const NewEditPostBtn = () => {
-  const authUser = useAuthUser();
+  const authUser = useSelector(authUserSelector);
 
   const dispatch = useDispatch();
 

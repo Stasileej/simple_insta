@@ -1,16 +1,17 @@
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
+
 import { TYPE_POST_EDIT, TYPE_POST_NEW_COMMENT, TYPE_POST_EDIT_COMMENT, TYPE_POST_NEW } from '../../data/apiData';
+import { postTypeSelector } from '../../selectors/selectors';
+
 import Modal from '../modal/Modal';
 import ModalWrapper from '../modalWrapper/ModalWrapper';
 import NewPostForm from '../../Forms/newPostForm/NewPostForm';
-import NewPostCommentForm from './../../Forms/newPostCommentForm/NewPostCommentForm';
+import NewPostCommentForm from '../../Forms/newPostCommentForm/NewPostCommentForm';
 
-import { usePostType } from '../../hooks/selectors';
+const ModalComposer = ({ type }) => {
+  const postType = useSelector(postTypeSelector);
 
-import { useMemo } from 'react';
-
-const NewEditPost = ({ type }) => {
-  const postType = usePostType();
-  
   const header = useMemo(() => {
     if (type === TYPE_POST_NEW) {
       return 'Create new post';
@@ -33,7 +34,7 @@ const NewEditPost = ({ type }) => {
     if (postType === TYPE_POST_NEW_COMMENT || postType === TYPE_POST_EDIT_COMMENT) {
       return <NewPostCommentForm />;
     }
-  }, [postType])
+  }, [postType]);
 
   return (
     <Modal>
@@ -45,4 +46,4 @@ const NewEditPost = ({ type }) => {
   );
 };
 
-export default NewEditPost;
+export default ModalComposer;

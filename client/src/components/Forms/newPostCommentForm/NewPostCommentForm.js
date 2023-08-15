@@ -1,20 +1,20 @@
 import classes from './NewPostCommentForm.module.css';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TYPE_POST_EDIT_COMMENT, TYPE_POST_NEW_COMMENT } from '../../data/apiData';
 import { modalActions } from '../../redux/modalSlice';
 import { postIdActions } from '../../redux/postIdSlice';
+import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
+import { authUserSelector, commentIdSelector, currentPageSelector, postTypeSelector } from '../../selectors/selectors';
+import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
+import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
-import { useAuthUser, useCommentId, useCurrentPage, usePostType } from '../../hooks/selectors';
 import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Button from '../../UI/dumbComponents/Button';
 import TextArea from '../../UI/dumbComponents/Textarea';
-import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
-import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
 
 const formText = {
   textareaCommentLabel: 'Comment:',
@@ -35,10 +35,11 @@ const NewPostCommentForm = () => {
   const [didSubmit, setDidSubmit] = useState(false);
   const [comment, setComment] = useState('');
 
-  const authUser = useAuthUser();
-  const postType = usePostType();
-  const commentId = useCommentId();
-  const currentPage = useCurrentPage();
+  const authUser = useSelector(authUserSelector);
+  const postType = useSelector(postTypeSelector);
+  const commentId = useSelector(commentIdSelector);
+  const currentPage = useSelector(currentPageSelector);
+  
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();
@@ -55,7 +56,8 @@ const NewPostCommentForm = () => {
 
       setIsSubmitting(true);
 
-      if (postType === TYPE_POST_NEW_COMMENT) { // get from redux (dor example from modal params)
+      if (postType === TYPE_POST_NEW_COMMENT) {
+        // get from redux (dor example from modal params)
         try {
           await newCommentFetch(+commentId, comment, authUser);
         } catch (error) {}

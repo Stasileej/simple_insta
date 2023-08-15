@@ -1,26 +1,36 @@
 import classes from './MainPage.module.css';
 
 import { useEffect, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import NewEditPostBtn from '../../cta/newEditPost/NewEditPostBtn';
 import SearchFilterForm from '../../Forms/searchFilterForm/SearchFilterForm';
 import CardList from '../../UI/cardList/CardList';
-import NewEditPost from '../../UI/newEditPost/NewEditPost';
+import ModalComposer from '../../UI/ModalComposer/ModalComposer';
 import Pagination from '../../UI/pagination/Pagination';
 
-import { useAllPosts, useAuthUser, useCurrentPage, useModal, usePaginator, usePaginatorHiding, usePostType } from '../../hooks/selectors';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
+import {
+  allPostsSelector,
+  authUserSelector,
+  currentPageSelector,
+  modalSelector,
+  paginatorHidingSelector,
+  paginatorSelector,
+  postTypeSelector,
+} from '../../selectors/selectors';
+
 const MainPage = () => {
-  const allPosts = useAllPosts();
-  const modal = useModal();
-  const postType = usePostType();
-  const paginator = usePaginator();
-  const currentPage = useCurrentPage();
+  const allPosts = useSelector(allPostsSelector);
+  const modal = useSelector(modalSelector);
+  const postType = useSelector(postTypeSelector);
+  const paginator = useSelector(paginatorSelector);
+  const currentPage = useSelector(currentPageSelector);
+  const paginatorHiding = useSelector(paginatorHidingSelector);
+  const authUser = useSelector(authUserSelector);
+  
   const fetchAllPosts = useFetchAllPosts();
-  const paginatorHiding = usePaginatorHiding();
-  const authUser = useAuthUser();
 
   const dispatch = useDispatch();
 
@@ -35,7 +45,7 @@ const MainPage = () => {
   return (
     <div className={classes.mainPage}>
       <NewEditPostBtn />
-      {modal && <NewEditPost type={postType} />}
+      {modal && <ModalComposer type={postType} />}
       <SearchFilterForm />
       <CardList posts={allPosts} authUser={authUser} fetchAllPosts={fetchAllPosts} currentPage={currentPage} />
       {pagination}

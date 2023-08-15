@@ -1,15 +1,15 @@
 import classes from './Logout.module.css';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCallback, useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { authActions } from '../../redux/authSlice';
 import { AUTH_USER } from '../../data/apiData';
-
-import { useAuthUser, useCurrentPage } from '../../hooks/selectors';
-import Button from '../../UI/dumbComponents/Button';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
-import { NavLink } from 'react-router-dom';
+import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
+
+import Button from '../../UI/dumbComponents/Button';
 
 const logoutText = {
   user: 'User',
@@ -18,8 +18,9 @@ const logoutText = {
 };
 
 const Logout = () => {
-  const authUser = useAuthUser();
-  const currentPage = useCurrentPage();
+  const authUser = useSelector(authUserSelector);
+  const currentPage = useSelector(currentPageSelector);
+
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();

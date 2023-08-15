@@ -1,20 +1,26 @@
 import classes from './NewPostForm.module.css';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { TYPE_POST_EDIT, TYPE_POST_NEW } from '../../data/apiData';
 import { modalActions } from '../../redux/modalSlice';
 import { postIdActions } from '../../redux/postIdSlice';
+import { editPostFetch, imagePostFetch, newPostFetch } from '../../data/requestsAPI';
+import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
+import {
+  authUserSelector,
+  commentIdSelector,
+  currentPageSelector,
+  paginatorSelector,
+  postTypeSelector,
+} from '../../selectors/selectors';
 
-import { useAuthUser, useCommentId, useCurrentPage, usePaginator, usePostType } from '../../hooks/selectors';
 import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Input from '../../UI/dumbComponents/Input';
 import Button from '../../UI/dumbComponents/Button';
-import { editPostFetch, imagePostFetch, newPostFetch } from '../../data/requestsAPI';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
-import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
 
 const formText = {
   inputTitleLabel: 'Title:',
@@ -38,11 +44,12 @@ const NewPostForm = () => {
   const [file, setFile] = useState();
   const [filePreviewURL, setFilePreviewURL] = useState(null);
 
-  const authUser = useAuthUser();
-  const paginator = usePaginator();
-  const postType = usePostType();
-  const postId = useCommentId();
-  const currentPage = useCurrentPage();
+  const authUser = useSelector(authUserSelector);
+  const paginator = useSelector(paginatorSelector);
+  const postType = useSelector(postTypeSelector);
+  const postId = useSelector(commentIdSelector);
+  const currentPage = useSelector(currentPageSelector);
+
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();

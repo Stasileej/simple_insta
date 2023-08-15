@@ -1,4 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+
 import { allPostsReducer } from './allPostsSlice';
 import { authReducer } from './authSlice';
 import { currentPageReducer } from './currentPageSlice';
@@ -7,7 +9,6 @@ import { paginatorHidingReducer } from './paginatorHidingSlice';
 import { paginatorReducer } from './paginatorSlice';
 import { postIdReducer } from './postIdSlice';
 import { postTypeReducer } from './postTypeSlice';
-import logger from 'redux-logger';
 
 export const store = configureStore({
   reducer: {

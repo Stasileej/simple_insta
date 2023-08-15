@@ -1,16 +1,16 @@
 import classes from './CardComment.module.css';
 
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { postTypeActions } from '../../redux/postTypeSlice';
 import { postIdActions } from '../../redux/postIdSlice';
 import { modalActions } from '../../redux/modalSlice';
 
-import { useAuthUser, useCurrentPage } from '../../hooks/selectors';
-import Button from '../dumbComponents/Button';
+import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
 import { commentDeleteFetch, commentVotesFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+import Button from '../dumbComponents/Button';
 
 const delConfirm = 'Are you sure you wish to delete this comment?';
 
@@ -30,8 +30,9 @@ const CardComment = ({ comment }) => {
   const [vote, setVote] = useState(false);
   const [isDel, setIsDel] = useState(false);
 
-  const authUser = useAuthUser();
-  const currentPage = useCurrentPage();
+  const authUser = useSelector(authUserSelector);
+  const currentPage = useSelector(currentPageSelector);
+  
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();

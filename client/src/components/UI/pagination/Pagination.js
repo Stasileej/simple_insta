@@ -1,13 +1,15 @@
 import classes from './Pagination.module.css';
 
-import { useDispatch } from 'react-redux';
-import { currentPageActions } from './../../redux/currentPageSlice';
-import { usePaginator } from '../../hooks/selectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
+
+import { currentPageActions } from './../../redux/currentPageSlice';
+import { paginatorSelector } from '../../selectors/selectors';
+
 import Button from '../dumbComponents/Button';
 
 const Pagination = () => {
-  const paginator = usePaginator();
+  const paginator = useSelector(paginatorSelector);
 
   const dispatch = useDispatch();
 

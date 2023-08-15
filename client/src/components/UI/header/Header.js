@@ -1,10 +1,11 @@
 import classes from './Header.module.css';
 
+import { useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { useAuthUser } from '../../hooks/selectors';
 import { routes } from '../../data/routes';
-import { useMemo } from 'react';
+import { authUserSelector } from '../../selectors/selectors';
 
 const headerTextContent = {
   title: 'ReactApp',
@@ -13,7 +14,7 @@ const headerTextContent = {
 };
 
 const Header = () => {
-  const authUser = useAuthUser();
+  const authUser = useSelector(authUserSelector);
   const mainPageLinkText = useMemo(() => (!!authUser ? authUser : headerTextContent.title), [authUser]);
   const loginLogoutLinkText = useMemo(
     () =>
