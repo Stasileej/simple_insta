@@ -7,6 +7,7 @@ import { paginatorHidingReducer } from './paginatorHidingSlice';
 import { paginatorReducer } from './paginatorSlice';
 import { postIdReducer } from './postIdSlice';
 import { postTypeReducer } from './postTypeSlice';
+import logger from 'redux-logger';
 
 export const store = configureStore({
   reducer: {
@@ -19,4 +20,5 @@ export const store = configureStore({
     currentPage: currentPageReducer,
     paginatorHiding: paginatorHidingReducer,
   },
+  middleware: [logger],
 });
