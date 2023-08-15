@@ -1,0 +1,43 @@
+.comment {
+  padding: 1rem 0;
+  border-top: 1px solid #a2a8d3;
+  border-bottom: 1px solid #a2a8d3;
+}
+.comment:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+.comment button {
+  padding: 0.5rem 1rem;
+}
+
+.commentText {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e7eaf6;
+  font-style: italic;
+}
+
+.nameDate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.nameDate > * {
+  font-size: 1.2rem;
+}
+
+.username {
+  font-weight: 600;
+}
+
+.date {
+  font-style: italic;
+}
+
+.votes,
+.btnBlock {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1rem 0;
+}

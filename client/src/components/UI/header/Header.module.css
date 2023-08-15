@@ -1,0 +1,40 @@
+.header {
+  width: 100%;
+  min-height: 8rem;
+  padding: 2rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3988A4;
+  background: linear-gradient(135deg, #67C2D4 0%, #3988A4 100%);
+}
+
+.header h3 {
+  color: #e0e0e0;
+}
+
+.header a:link,
+.header a:visited {
+  color: #e0e0e0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  transition: 0.15s;
+  background-color: transparent;
+  position: relative;
+}
+
+.header a:link:hover,
+.header a:visited:hover,
+.header h3:hover {
+  transform: translateY(1px);
+  color: #ffffff;
+  cursor: pointer;
+  filter: drop-shadow(0px 10px 3px #ffffff2d);
+}
+
+.header a:link:active {
+  transform: translateY(2px);
+  color: #ffffff;
+  cursor: pointer;
+  filter: drop-shadow(0px 8px 2px #ffffff2d);
+}

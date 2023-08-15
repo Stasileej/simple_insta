@@ -1,0 +1,39 @@
+.logoutPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 3rem;
+}
+
+.logoutPage button {
+  margin-top: 2rem;
+}
+
+.logoutPage a:link,
+.logoutPage a:visited {
+  margin-top: 2rem;
+  color: #38598b !important;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 1.8rem;
+  transition: 0.15s;
+  background-color: transparent;
+  position: relative;
+}
+
+.logoutPage a:link:hover,
+.logoutPage a:visited:hover,
+.logoutPage h3:hover {
+  transform: translateY(1px);
+  color: #113f67;
+  cursor: pointer;
+  filter: drop-shadow(0px 5px 2px #113f6736);
+}
+
+.logoutPage a:link:active {
+  transform: translateY(2px);
+  color: #113f67;
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 1px #113f675e);
+}

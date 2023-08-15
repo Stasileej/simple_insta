@@ -1,0 +1,6 @@
+.mainPage {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  min-height: calc(100vh - 8rem);
+}
