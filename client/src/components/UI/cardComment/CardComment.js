@@ -1,15 +1,14 @@
 import classes from './CardComment.module.css';
 
-import { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { postTypeActions } from '../../redux/postTypeSlice';
-import { postIdActions } from '../../redux/postIdSlice';
-import { modalActions } from '../../redux/modalSlice';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
 import { commentDeleteFetch, commentVotesFetch } from '../../data/requestsAPI';
+import { useLikeDislikeHandlers } from '../../hooks/useLikeDislikeHandlers';
+import { usePostCommentHandlers } from '../../hooks/usePostCommentHandlers';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+
 import Button from '../dumbComponents/Button';
 
 const delConfirm = 'Are you sure you wish to delete this comment?';
@@ -23,85 +22,27 @@ const cardText = {
 };
 
 const CardComment = ({ comment }) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [isDisliked, setIsDisliked] = useState(false);
-  const [likes, setLikes] = useState(comment.likes);
-  const [dislikes, setDisikes] = useState(comment.dislikes);
-  const [vote, setVote] = useState(false);
   const [isDel, setIsDel] = useState(false);
 
   const authUser = useSelector(authUserSelector);
   const currentPage = useSelector(currentPageSelector);
-  
+
   const fetchAllPosts = useFetchAllPosts();
 
-  const dispatch = useDispatch();
-  
   const isPostEditable = authUser === comment.username;
 
-  const likeHandler = useCallback(async () => {
-    if (!isLiked && !isDisliked) {
-      setIsLiked(true);
-      if (!likes.includes(authUser)) {
-        setLikes([...likes, authUser]);
-      }
-    }
-    if (!isLiked && isDisliked) {
-      setIsDisliked(false);
-      if (dislikes.includes(authUser)) {
-        setDisikes(dislikes.filter((user) => user !== authUser));
-      }
-    }
-    setVote((vote) => !vote);
-  }, [authUser, dislikes, isDisliked, isLiked, likes]);
+  const id = comment.id;
 
-  const dislikeHandler = useCallback(async () => {
-    if (!isDisliked && !isLiked) {
-      setIsDisliked(true);
-      if (!dislikes.includes(authUser)) {
-        setDisikes([...dislikes, authUser]);
-      }
-    }
-    if (!isDisliked && isLiked) {
-      setIsLiked(false);
-      if (likes.includes(authUser)) {
-        setLikes(likes.filter((user) => user !== authUser));
-      }
-    }
-    setVote((vote) => !vote);
-  }, [authUser, dislikes, isDisliked, isLiked, likes]);
+  const { likeHandler, dislikeHandler, isLiked, isDisliked, likes, dislikes } = useLikeDislikeHandlers(
+    authUser, id, comment.likes, comment.dislikes, commentVotesFetch
+  );
 
-  useEffect(() => {
-    const sendVotes = async () => {
-      await commentVotesFetch(comment.id, likes, dislikes);
-    };
-
-    sendVotes();
-
-    if (authUser && likes.includes(authUser)) {
-      setIsLiked(true);
-    }
-    if (authUser && dislikes.includes(authUser)) {
-      setIsDisliked(true);
-    }
-  }, [authUser, comment.id, dislikes, likes, vote]);
-
-  const editPostHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeEditComment());
-    dispatch(postIdActions.setPostId(comment.id));
-    dispatch(modalActions.modalOpen());
-  }, [comment.id, dispatch]);
-
-  const deletePostHandler = useCallback(() => {
-    if (window.confirm(delConfirm)) {
-      setIsDel(true);
-    }
-  }, []);
+  const { editCommentHandler, deletePostHandler } = usePostCommentHandlers(id, setIsDel, delConfirm);
 
   useEffect(() => {
     const delComment = async () => {
-      commentDeleteFetch(comment.id);
-      
+      commentDeleteFetch(id);
+
       fetchAllPosts(currentPage);
     };
 
@@ -109,11 +50,11 @@ const CardComment = ({ comment }) => {
       delComment();
       setIsDel(false);
     }
-  }, [comment.id, currentPage, fetchAllPosts, isDel]);
+  }, [id, currentPage, fetchAllPosts, isDel]);
 
   return (
     <>
-      <div key={comment.id} id={comment.id} className={classes.comment}>
+      <div key={id} id={id} className={classes.comment}>
         <p className={classes.commentText}>"{comment.text}"</p>
         <div className={classes.nameDate}>
           <p className={classes.username}>{comment.username}</p>
@@ -138,7 +79,7 @@ const CardComment = ({ comment }) => {
           </Button>
         </div>
         <div className={classes.btnBlock}>
-          <Button disabled={!isPostEditable} onClick={editPostHandler}>
+          <Button disabled={!isPostEditable} onClick={editCommentHandler}>
             {cardText.buttonEdit}
           </Button>
           <Button disabled={!isPostEditable} onClick={deletePostHandler}>

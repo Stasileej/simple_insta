@@ -10,8 +10,8 @@ const CardList = ({ posts, authUser, fetchAllPosts, currentPage }) => {
           id={card.id}
           title={card.title}
           username={card.username}
-          likes={card.likes}
-          dislikes={card.dislikes}
+          likesProps={card.likes}
+          dislikesProps={card.dislikes}
           imageSrc={card.imageSrc}
           date={card.date}
           comments={card.comments}

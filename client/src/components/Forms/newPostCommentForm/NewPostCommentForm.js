@@ -39,7 +39,7 @@ const NewPostCommentForm = () => {
   const postType = useSelector(postTypeSelector);
   const commentId = useSelector(commentIdSelector);
   const currentPage = useSelector(currentPageSelector);
-  
+
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();
@@ -57,7 +57,6 @@ const NewPostCommentForm = () => {
       setIsSubmitting(true);
 
       if (postType === TYPE_POST_NEW_COMMENT) {
-        // get from redux (dor example from modal params)
         try {
           await newCommentFetch(+commentId, comment, authUser);
         } catch (error) {}

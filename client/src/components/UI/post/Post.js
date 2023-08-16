@@ -1,16 +1,14 @@
 import classes from './Post.module.css';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect, useMemo } from 'react';
+
+import { postDeleteFetch, postVotesFetch } from '../../data/requestsAPI';
+import { useLikeDislikeHandlers } from '../../hooks/useLikeDislikeHandlers';
+import { usePostCommentHandlers } from '../../hooks/usePostCommentHandlers';
 
 import CardCommentsList from '../cardCommentsList/CardCommentsList';
-import { postTypeActions } from '../../redux/postTypeSlice';
-import { modalActions } from '../../redux/modalSlice';
-import { postIdActions } from '../../redux/postIdSlice';
-import { useAuthUser, useCurrentPage } from '../../hooks/selectors';
+
 import Button from '../dumbComponents/Button';
-import { postDeleteFetch, postVotesFetch } from '../../data/requestsAPI';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
 const delConfirm = 'Are you sure you wish to delete this post?';
 
@@ -24,79 +22,28 @@ const cardText = {
   buttonComments: 'Comments',
 };
 
-// unreadable (separate on subcomponents)
-const Post = ({ id, title, username, likes, dislikes, imageSrc, date, comments, authUser, fetchAllPosts, currentPage }) => {
-  const [isLiked, setIsLiked] = useState(false);
-  const [isDisliked, setIsDisliked] = useState(false);
-  const [likesState, setLikesState] = useState(likes);
-  const [dislikesState, setDisikesState] = useState(dislikes);
-  const [vote, setVote] = useState(false);
+const Post = ({
+  id,
+  title,
+  username,
+  likesProps,
+  dislikesProps,
+  imageSrc,
+  date,
+  comments,
+  authUser,
+  fetchAllPosts,
+  currentPage,
+}) => {
   const [isCommentsOpened, setIsCommentsOpened] = useState(false);
   const [isDel, setIsDel] = useState(false);
 
   const isPostEditable = authUser === username;
 
-  const dispatch = useDispatch();
+  const { likeHandler, dislikeHandler, isLiked, isDisliked, likes, dislikes } = useLikeDislikeHandlers(authUser, id, likesProps, dislikesProps, postVotesFetch);
 
-  const likeHandler = useCallback(async () => {
-    if (!isLiked && !isDisliked) {
-      setIsLiked(true);
-      if (!likesState.includes(authUser)) {
-        setLikesState([...likesState, authUser]);
-      }
-    }
-    if (!isLiked && isDisliked) {
-      setIsDisliked(false);
-      if (dislikesState.includes(authUser)) {
-        setDisikesState(dislikesState.filter((user) => user !== authUser));
-      }
-    }
-    setVote((vote) => !vote);
-  }, [authUser, dislikesState, isDisliked, isLiked, likesState]);
-
-  const dislikeHandler = useCallback(async () => {
-    if (!isDisliked && !isLiked) {
-      setIsDisliked(true);
-      if (!dislikesState.includes(authUser)) {
-        setDisikesState([...dislikesState, authUser]);
-      }
-    }
-    if (!isDisliked && isLiked) {
-      setIsLiked(false);
-      if (likesState.includes(authUser)) {
-        setLikesState(likesState.filter((user) => user !== authUser));
-      }
-    }
-    setVote((vote) => !vote);
-  }, [authUser, dislikesState, isDisliked, isLiked, likesState]);
-
-  useEffect(() => {
-    const sendVotes = async () => {
-      await postVotesFetch(id, likesState, dislikesState);
-    };
-    sendVotes();
-
-    if (authUser && likesState.includes(authUser)) {
-      setIsLiked(true);
-    }
-    if (authUser && dislikesState.includes(authUser)) {
-      setIsDisliked(true);
-    }
-  }, [authUser, dislikesState, id, likesState, vote]);
-
-  const openCommentsHandler = useCallback(() => {
-    setIsCommentsOpened(true);
-  }, []);
-
-  const closeCommentsHandler = useCallback(() => {
-    setIsCommentsOpened(false);
-  }, []);
-
-  const deletePostHandler = useCallback(() => {
-    if (window.confirm(delConfirm)) {
-      setIsDel(true);
-    }
-  }, []);
+  const { editPostHandler, addCommentHandler, deletePostHandler, openCommentsHandler, closeCommentsHandler } =
+    usePostCommentHandlers(id, setIsDel, delConfirm, setIsCommentsOpened);
 
   useEffect(() => {
     const delPost = async () => {
@@ -110,18 +57,6 @@ const Post = ({ id, title, username, likes, dislikes, imageSrc, date, comments, 
       setIsDel(false);
     }
   }, [currentPage, fetchAllPosts, id, isDel]);
-
-  const editPostHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeEdit());
-    dispatch(postIdActions.setPostId(id));
-    dispatch(modalActions.modalOpen());
-  }, [dispatch, id]);
-
-  const addCommentHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeNewComment());
-    dispatch(postIdActions.setPostId(id));
-    dispatch(modalActions.modalOpen());
-  }, [dispatch, id]);
 
   const postImage = useMemo(() => {
     return imageSrc
@@ -146,7 +81,7 @@ const Post = ({ id, title, username, likes, dislikes, imageSrc, date, comments, 
         >
           {cardText.buttonLike}
         </Button>
-        <span>{likesState.length - dislikesState.length}</span>
+        <span>{likes.length - dislikes.length}</span>
         <Button
           disabled={!authUser || (isDisliked && !isLiked)}
           onClick={dislikeHandler}
