@@ -9,7 +9,7 @@ import { postTypeActions } from '../../redux/postTypeSlice';
 import Button from '../../UI/dumbComponents/Button';
 import { authUserSelector } from '../../selectors/selectors';
 
-const btnText = 'New Posts';
+const text = 'New Posts';
 
 const NewEditPostBtn = () => {
   const authUser = useSelector(authUserSelector);
@@ -24,7 +24,7 @@ const NewEditPostBtn = () => {
   return (
     <div className={classes.btnWrapper}>
       <Button disabled={!authUser} onClick={onOpenHandler}>
-        {btnText}
+        {text}
       </Button>
     </div>
   );

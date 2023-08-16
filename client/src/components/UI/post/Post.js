@@ -12,7 +12,7 @@ import Button from '../dumbComponents/Button';
 
 const delConfirm = 'Are you sure you wish to delete this post?';
 
-const cardText = {
+const text = {
   onDate: 'on',
   buttonLike: '👍',
   buttonDislike: '👎',
@@ -70,7 +70,7 @@ const Post = ({
       <h3>{title}</h3>
       <div className={classes.nameDate}>
         <p className={classes.username}>{username}</p>
-        <p>{cardText.onDate}</p>
+        <p>{text.onDate}</p>
         <p className={classes.date}>{new Date(+date).toDateString()}</p>
       </div>
       <div className={classes.votes}>
@@ -79,7 +79,7 @@ const Post = ({
           onClick={likeHandler}
           className={isLiked ? classes.aciveVote : ''}
         >
-          {cardText.buttonLike}
+          {text.buttonLike}
         </Button>
         <span>{likes.length - dislikes.length}</span>
         <Button
@@ -87,21 +87,21 @@ const Post = ({
           onClick={dislikeHandler}
           className={isDisliked ? classes.aciveVote : ''}
         >
-          {cardText.buttonDislike}
+          {text.buttonDislike}
         </Button>
       </div>
       <div className={classes.btnBlock}>
         <Button disabled={!authUser} onClick={addCommentHandler}>
-          {cardText.buttonAddComment}
+          {text.buttonAddComment}
         </Button>
-        <Button onClick={openCommentsHandler}>{cardText.buttonComments}</Button>
+        <Button onClick={openCommentsHandler}>{text.buttonComments}</Button>
       </div>
       <div className={classes.btnBlock}>
         <Button disabled={!isPostEditable} onClick={editPostHandler}>
-          {cardText.buttonEdit}
+          {text.buttonEdit}
         </Button>
         <Button disabled={!isPostEditable} onClick={deletePostHandler}>
-          {cardText.buttonDelete}
+          {text.buttonDelete}
         </Button>
       </div>
 

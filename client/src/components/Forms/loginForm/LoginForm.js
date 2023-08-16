@@ -1,16 +1,18 @@
 import classes from './LoginForm.module.css';
 
-import { useEffect, useState, useCallback, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { authActions } from '../../redux/authSlice';
 import { AUTH_USER } from '../../data/apiData';
+
 import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Input from '../../UI/dumbComponents/Input';
 import Button from '../../UI/dumbComponents/Button';
+import { authUserSelector } from '../../selectors/selectors';
 
-const formText = {
+const text = {
   inputNameLabel: 'Enter your name',
   inputNameType: 'text',
   inputNameid: 'loginInput',
@@ -20,36 +22,34 @@ const formText = {
 
 const LoginForm = () => {
   const [loginInput, setLoginInput] = useState('');
-  const [isAuthorized, setIsAuthorized] = useState(false);
 
+  const authUser = useSelector(authUserSelector);
   const dispatch = useDispatch();
 
   const inputNameHandler = useCallback((event) => {
     setLoginInput(event.target.value);
   }, []);
 
-  const loginHandler = useCallback((event) => {
-    event.preventDefault();
-    setIsAuthorized(true);
-  }, []);
+  const loginHandler = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (!authUser) {
+        localStorage.setItem(AUTH_USER, loginInput);
+        dispatch(authActions.login(loginInput));
+        setLoginInput('');
+      }
+    },
+    [authUser, dispatch, loginInput]
+  );
 
   const isFormValid = useMemo(() => loginInput.trim().length === 0, [loginInput]);
 
-  useEffect(() => {
-    if (isAuthorized) {
-      localStorage.setItem(AUTH_USER, loginInput);
-      dispatch(authActions.login(loginInput));
-      setIsAuthorized(false);
-      setLoginInput('');
-    }
-  }, [loginInput, dispatch, isAuthorized]);
-
   return (
     <Form onSubmit={loginHandler} className={classes.formLogin}>
-      <Label htmlFor={formText.inputNameid} textContent={formText.inputNameLabel} />
-      <Input type={formText.inputNameType} id={formText.inputNameid} onChange={inputNameHandler} value={loginInput} />
-      <Button disabled={isFormValid} type={formText.buttonSubmitType}>
-        {formText.buttonLogin}
+      <Label htmlFor={text.inputNameid} textContent={text.inputNameLabel} />
+      <Input type={text.inputNameType} id={text.inputNameid} onChange={inputNameHandler} value={loginInput} />
+      <Button disabled={isFormValid} type={text.buttonSubmitType}>
+        {text.buttonLogin}
       </Button>
     </Form>
   );

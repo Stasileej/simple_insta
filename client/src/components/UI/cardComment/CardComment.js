@@ -13,7 +13,7 @@ import Button from '../dumbComponents/Button';
 
 const delConfirm = 'Are you sure you wish to delete this comment?';
 
-const cardText = {
+const text = {
   onDate: 'on',
   buttonLike: '👍',
   buttonDislike: '👎',
@@ -58,7 +58,7 @@ const CardComment = ({ comment }) => {
         <p className={classes.commentText}>"{comment.text}"</p>
         <div className={classes.nameDate}>
           <p className={classes.username}>{comment.username}</p>
-          <p>{cardText.onDate}</p>
+          <p>{text.onDate}</p>
           <p className={classes.date}>{new Date(+comment.date).toDateString()}</p>
         </div>
         <div className={classes.votes}>
@@ -67,7 +67,7 @@ const CardComment = ({ comment }) => {
             onClick={likeHandler}
             className={isLiked ? classes.aciveVote : ''}
           >
-            {cardText.buttonLike}
+            {text.buttonLike}
           </Button>
           <span>{likes.length - dislikes.length}</span>
           <Button
@@ -75,15 +75,15 @@ const CardComment = ({ comment }) => {
             onClick={dislikeHandler}
             className={isDisliked ? classes.aciveVote : ''}
           >
-            {cardText.buttonDislike}
+            {text.buttonDislike}
           </Button>
         </div>
         <div className={classes.btnBlock}>
           <Button disabled={!isPostEditable} onClick={editCommentHandler}>
-            {cardText.buttonEdit}
+            {text.buttonEdit}
           </Button>
           <Button disabled={!isPostEditable} onClick={deletePostHandler}>
-            {cardText.buttonDelete}
+            {text.buttonDelete}
           </Button>
         </div>
       </div>
