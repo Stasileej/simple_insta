@@ -1,4 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import useFetchAllPosts from './useFetchAllPosts';
+import { paginatorHidingActions } from '../redux/paginatorHidingSlice';
+import { currentPageSelector } from '../selectors/selectors';
 
 export function useLikeDislikeHandlers(authUser, id, likesProps, dislikesProps, votesFetch) {
   const [vote, setVote] = useState(false);
@@ -6,6 +11,11 @@ export function useLikeDislikeHandlers(authUser, id, likesProps, dislikesProps, 
   const [isDisliked, setIsDisliked] = useState(false);
   const [likes, setLikes] = useState(likesProps);
   const [dislikes, setDisikes] = useState(dislikesProps);
+
+  const fetchAllPosts = useFetchAllPosts();
+  const currentPage = useSelector(currentPageSelector);
+
+  const dispatch = useDispatch();
 
   const likeHandler = useCallback(async () => {
     if (!isLiked && !isDisliked) {
@@ -54,8 +64,10 @@ export function useLikeDislikeHandlers(authUser, id, likesProps, dislikesProps, 
     if (authUser && dislikes.includes(authUser)) {
       setIsDisliked(true);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [authUser, dislikes, id, likes, vote]);
+
+    fetchAllPosts(currentPage);
+    dispatch(paginatorHidingActions.paginatorShow());
+  }, [authUser, currentPage, dislikes, dispatch, fetchAllPosts, id, likes, vote, votesFetch]);
 
   return { likeHandler, dislikeHandler, isLiked, isDisliked, likes, dislikes };
 }
