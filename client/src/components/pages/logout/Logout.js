@@ -5,7 +5,6 @@ import { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import { authActions } from '../../redux/authSlice';
-import { AUTH_USER } from '../../data/apiData';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
 
@@ -28,7 +27,6 @@ const Logout = () => {
   const logoutHandler = useCallback(() => {
     if (authUser) {
       dispatch(authActions.logout());
-      localStorage.removeItem(AUTH_USER);
     }
     fetchAllPosts(currentPage);
   }, [authUser, currentPage, dispatch, fetchAllPosts]);

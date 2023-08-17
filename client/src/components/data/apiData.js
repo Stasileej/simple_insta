@@ -1,7 +1,5 @@
 export const MAIN_URL = 'http://localhost:8080/';
 
-export const AUTH_USER = 'authUser';
-
 export const TYPE_POST_NEW = 'new post';
 
 export const TYPE_POST_EDIT = 'edit post';

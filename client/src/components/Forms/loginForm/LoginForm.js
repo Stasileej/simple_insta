@@ -3,14 +3,12 @@ import classes from './LoginForm.module.css';
 import { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { authActions } from '../../redux/authSlice';
-import { AUTH_USER } from '../../data/apiData';
-
 import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Input from '../../UI/dumbComponents/Input';
 import Button from '../../UI/dumbComponents/Button';
 import { authUserSelector } from '../../selectors/selectors';
+import { loginAsync } from '../../redux/authActions';
 
 const text = {
   inputNameLabel: 'Enter your name',
@@ -31,11 +29,10 @@ const LoginForm = () => {
   }, []);
 
   const loginHandler = useCallback(
-    (event) => {
+    async (event) => {
       event.preventDefault();
       if (!authUser) {
-        localStorage.setItem(AUTH_USER, loginInput);
-        dispatch(authActions.login(loginInput));
+        dispatch(loginAsync(loginInput));
         setLoginInput('');
       }
     },

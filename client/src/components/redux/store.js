@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
 import { allPostsReducer } from './allPostsSlice';
 import { authReducer } from './authSlice';
@@ -21,5 +22,5 @@ export const store = configureStore({
     currentPage: currentPageReducer,
     paginatorHiding: paginatorHidingReducer,
   },
-  middleware: [logger],
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk, logger),
 });
