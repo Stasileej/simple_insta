@@ -1,30 +1,27 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { postTypeActions } from '../redux/postTypeSlice';
 import { postIdActions } from '../redux/postIdSlice';
-import { modalActions } from '../redux/modalSlice';
+import { modalComposerActions } from '../redux/modalComposerSlice';
+import { MODE_EDIT, MODE_NEW, TYPE_COMMENT, TYPE_POST } from '../data/apiData';
 
 
 export function usePostCommentHandlers( id, setIsDel, delConfirm, setIsCommentsOpened) {
   const dispatch = useDispatch();
 
   const editPostHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeEdit());
     dispatch(postIdActions.setPostId(id));
-    dispatch(modalActions.modalOpen());
+    dispatch(modalComposerActions.setModalContent({ type: TYPE_POST, mode: MODE_EDIT }));
   }, [dispatch, id]);
 
   const addCommentHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeNewComment());
     dispatch(postIdActions.setPostId(id));
-    dispatch(modalActions.modalOpen());
+    dispatch(modalComposerActions.setModalContent({ type: TYPE_COMMENT, mode: MODE_NEW }));
   }, [dispatch, id]);
 
   const editCommentHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeEditComment());
     dispatch(postIdActions.setPostId(id));
-    dispatch(modalActions.modalOpen());
+    dispatch(modalComposerActions.setModalContent({ type: TYPE_COMMENT, mode: MODE_EDIT }));
   }, [dispatch, id]);
 
   const deletePostHandler = useCallback(() => {

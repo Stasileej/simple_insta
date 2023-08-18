@@ -6,6 +6,8 @@ export const commentIdSelector = (state) => state.postId.postId;
 
 export const allPostsSelector = (state) => state.allPosts.allPosts;
 
+export const modalComposerSelector = (state) => state.modalComposer;
+
 export const modalSelector = (state) => state.modal.modal;
 
 export const currentPageSelector = (state) => state.currentPage.currentPage;

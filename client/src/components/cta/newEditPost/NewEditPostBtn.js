@@ -3,11 +3,10 @@ import classes from './NewEditPostBtn.module.css';
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { modalActions } from '../../redux/modalSlice';
-import { postTypeActions } from '../../redux/postTypeSlice';
-
 import Button from '../../UI/dumbComponents/Button';
 import { authUserSelector } from '../../selectors/selectors';
+import { MODE_NEW, TYPE_POST } from '../../data/apiData';
+import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const text = 'New Posts';
 
@@ -17,8 +16,7 @@ const NewEditPostBtn = () => {
   const dispatch = useDispatch();
 
   const onOpenHandler = useCallback(() => {
-    dispatch(postTypeActions.postTypeNew());
-    dispatch(modalActions.modalOpen());
+    dispatch(modalComposerActions.setModalContent({ type: TYPE_POST, mode: MODE_NEW }));
   }, [dispatch]);
 
   return (

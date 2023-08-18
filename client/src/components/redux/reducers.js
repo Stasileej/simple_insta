@@ -1,17 +1,15 @@
 import { allPostsReducer } from './allPostsSlice';
 import { authReducer } from './authSlice';
 import { currentPageReducer } from './currentPageSlice';
-import { modalReducer } from './modalSlice';
+import { modalComposerReducer } from './modalComposerSlice';
 import { paginatorHidingReducer } from './paginatorHidingSlice';
 import { paginatorReducer } from './paginatorSlice';
 import { postIdReducer } from './postIdSlice';
-import { postTypeReducer } from './postTypeSlice';
 
 const rootReducer = {
   auth: authReducer,
   allPosts: allPostsReducer,
-  modal: modalReducer,
-  postType: postTypeReducer,
+  modalComposer: modalComposerReducer,
   postId: postIdReducer,
   paginator: paginatorReducer,
   currentPage: currentPageReducer,

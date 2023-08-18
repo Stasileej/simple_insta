@@ -3,8 +3,7 @@ import classes from './NewPostForm.module.css';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TYPE_POST_EDIT, TYPE_POST_NEW } from '../../data/apiData';
-import { modalActions } from '../../redux/modalSlice';
+import { MODE_EDIT, MODE_NEW, TYPE_POST } from '../../data/apiData';
 import { postIdActions } from '../../redux/postIdSlice';
 import { editPostFetch, imagePostFetch, newPostFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
@@ -13,14 +12,15 @@ import {
   authUserSelector,
   commentIdSelector,
   currentPageSelector,
+  modalComposerSelector,
   paginatorSelector,
-  postTypeSelector,
 } from '../../selectors/selectors';
 
 import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Input from '../../UI/dumbComponents/Input';
 import Button from '../../UI/dumbComponents/Button';
+import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const formText = {
   inputTitleLabel: 'Title:',
@@ -44,9 +44,9 @@ const NewPostForm = () => {
   const [file, setFile] = useState();
   const [filePreviewURL, setFilePreviewURL] = useState(null);
 
+  const { type, mode } = useSelector(modalComposerSelector);
   const authUser = useSelector(authUserSelector);
   const paginator = useSelector(paginatorSelector);
-  const postType = useSelector(postTypeSelector);
   const postId = useSelector(commentIdSelector);
   const currentPage = useSelector(currentPageSelector);
 
@@ -72,11 +72,11 @@ const NewPostForm = () => {
 
       setIsSubmitting(true);
 
-      if (postType === TYPE_POST_NEW) {
+      if (type === TYPE_POST && mode === MODE_NEW) {
         dispatch(postIdActions.resetPostId());
         newPostFetch(title, authUser);
       }
-      if (postType === TYPE_POST_EDIT) {
+      if (type === TYPE_POST && mode === MODE_EDIT) {
         editPostFetch(postId, title);
       }
 
@@ -95,14 +95,14 @@ const NewPostForm = () => {
         setFilePreviewURL(null);
       }
     },
-    [paginator.totalPosts, authUser, dispatch, file, filePreviewURL, postId, postType, title]
+    [type, mode, file, postId, paginator.totalPosts, dispatch, filePreviewURL, title, authUser]
   );
 
   useEffect(() => {
     let submitted;
     if (didSubmit) {
       submitted = setTimeout(() => {
-        dispatch(modalActions.modalClose());
+        dispatch(modalComposerActions.closeModal());
         setDidSubmit(false);
       }, 1500);
     }
@@ -115,7 +115,7 @@ const NewPostForm = () => {
 
   const previewPicture = useMemo(() => filePreviewURL && <img src={filePreviewURL} alt='preview' />, [filePreviewURL]);
 
-  const onCancelHandler = useCallback(() => dispatch(modalActions.modalClose()), [dispatch]);
+  const onCancelHandler = useCallback(() => dispatch(modalComposerActions.closeModal()), [dispatch]);
 
   const sendingInfo = useMemo(() => {
     if (isSubmitting && !didSubmit) {

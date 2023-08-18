@@ -15,21 +15,19 @@ import {
   allPostsSelector,
   authUserSelector,
   currentPageSelector,
-  modalSelector,
+  modalComposerSelector,
   paginatorHidingSelector,
   paginatorSelector,
-  postTypeSelector,
 } from '../../selectors/selectors';
 
 const MainPage = () => {
   const allPosts = useSelector(allPostsSelector);
-  const modal = useSelector(modalSelector);
-  const postType = useSelector(postTypeSelector);
+  const { visible: modal } = useSelector(modalComposerSelector);
   const paginator = useSelector(paginatorSelector);
   const currentPage = useSelector(currentPageSelector);
   const paginatorHiding = useSelector(paginatorHidingSelector);
   const authUser = useSelector(authUserSelector);
-  
+
   const fetchAllPosts = useFetchAllPosts();
 
   const dispatch = useDispatch();
@@ -45,7 +43,7 @@ const MainPage = () => {
   return (
     <div className={classes.mainPage}>
       <NewEditPostBtn />
-      {modal && <ModalComposer type={postType} />}
+      {modal && <ModalComposer />}
       <SearchFilterForm />
       <CardList posts={allPosts} authUser={authUser} fetchAllPosts={fetchAllPosts} currentPage={currentPage} />
       {pagination}

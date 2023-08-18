@@ -3,11 +3,10 @@ import classes from './NewPostCommentForm.module.css';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { TYPE_POST_EDIT_COMMENT, TYPE_POST_NEW_COMMENT } from '../../data/apiData';
-import { modalActions } from '../../redux/modalSlice';
+import { MODE_EDIT, MODE_NEW, TYPE_COMMENT } from '../../data/apiData';
 import { postIdActions } from '../../redux/postIdSlice';
 import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
-import { authUserSelector, commentIdSelector, currentPageSelector, postTypeSelector } from '../../selectors/selectors';
+import { authUserSelector, commentIdSelector, currentPageSelector, modalComposerSelector } from '../../selectors/selectors';
 import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
@@ -15,6 +14,7 @@ import Form from '../../UI/dumbComponents/Form';
 import Label from '../../UI/dumbComponents/Label';
 import Button from '../../UI/dumbComponents/Button';
 import TextArea from '../../UI/dumbComponents/Textarea';
+import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const formText = {
   textareaCommentLabel: 'Comment:',
@@ -35,8 +35,8 @@ const NewPostCommentForm = () => {
   const [didSubmit, setDidSubmit] = useState(false);
   const [comment, setComment] = useState('');
 
+  const { type, mode } = useSelector(modalComposerSelector);
   const authUser = useSelector(authUserSelector);
-  const postType = useSelector(postTypeSelector);
   const commentId = useSelector(commentIdSelector);
   const currentPage = useSelector(currentPageSelector);
 
@@ -56,12 +56,12 @@ const NewPostCommentForm = () => {
 
       setIsSubmitting(true);
 
-      if (postType === TYPE_POST_NEW_COMMENT) {
+      if (type === TYPE_COMMENT && mode === MODE_NEW) {
         try {
           await newCommentFetch(+commentId, comment, authUser);
         } catch (error) {}
       }
-      if (postType === TYPE_POST_EDIT_COMMENT) {
+      if (type === TYPE_COMMENT && mode === MODE_EDIT) {
         try {
           await editCommentFetch(commentId, comment);
         } catch (error) {}
@@ -72,14 +72,14 @@ const NewPostCommentForm = () => {
       setIsSubmitting(false);
       setDidSubmit(true);
     },
-    [authUser, comment, commentId, dispatch, postType]
+    [authUser, comment, commentId, dispatch, mode, type]
   );
 
   useEffect(() => {
     let submitted;
     if (didSubmit) {
       submitted = setTimeout(() => {
-        dispatch(modalActions.modalClose());
+        dispatch(modalComposerActions.closeModal());
         setDidSubmit(false);
       }, 1500);
     }
@@ -90,7 +90,7 @@ const NewPostCommentForm = () => {
     return () => clearTimeout(submitted);
   }, [currentPage, didSubmit, dispatch, fetchAllPosts]);
 
-  const onCancelHandler = useCallback(() => dispatch(modalActions.modalClose()), [dispatch]);
+  const onCancelHandler = useCallback(() => dispatch(modalComposerActions.closeModal()), [dispatch]);
 
   const sendingInfo = useMemo(() => {
     if (isSubmitting && !didSubmit) {

@@ -4,12 +4,12 @@ import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
 
-import { modalActions } from '../../redux/modalSlice';
+import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const Backdrop = () => {
   const dispatch = useDispatch();
 
-  const onCancelHandler = useCallback(() => dispatch(modalActions.modalClose()), [dispatch]);
+  const onCancelHandler = useCallback(() => dispatch(modalComposerActions.closeModal()), [dispatch]);
   return <div className={classes.backdrop} onClick={onCancelHandler}></div>;
 };
 

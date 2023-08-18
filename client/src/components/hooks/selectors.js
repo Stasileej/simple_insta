@@ -4,10 +4,6 @@ export const useAuthUser = () => {
   return useSelector((state) => state.auth.authUser);
 };
 
-export const usePostType = () => {
-  return useSelector((state) => state.postType.postType);
-};
-
 export const useCommentId = () => {
   return useSelector((state) => state.postId.postId);
 };
