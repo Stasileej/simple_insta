@@ -1,4 +1,4 @@
-import classes from './NewPostForm.module.css';
+import classes from './PostForm.module.css';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,10 +16,10 @@ import {
   paginatorSelector,
 } from '../../selectors/selectors';
 
-import Form from '../../UI/dumbComponents/Form';
-import Label from '../../UI/dumbComponents/Label';
-import Input from '../../UI/dumbComponents/Input';
-import Button from '../../UI/dumbComponents/Button';
+import Form from '../../ui/dumbComponents/Form';
+import Label from '../../ui/dumbComponents/Label';
+import Input from '../../ui/dumbComponents/Input';
+import Button from '../../ui/dumbComponents/Button';
 import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const formText = {
@@ -37,7 +37,7 @@ const sendingInfoText = {
   sent: 'Data sent successfully',
 };
 
-const NewPostForm = () => {
+const PostForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
   const [title, setTitle] = useState('');
@@ -56,9 +56,7 @@ const NewPostForm = () => {
 
   const isTitleInputValid = useMemo(() => title.trim().length === 0, [title]);
 
-  const inputTitleHandler = useCallback((event) => {
-    setTitle(event.target.value);
-  }, []);
+  const inputTitleHandler = useCallback((event) => { setTitle(event.target.value); }, []);
 
   const imageHandler = useCallback((event) => {
     setFile(event.target.files[0]);
@@ -147,4 +145,4 @@ const NewPostForm = () => {
   );
 };
 
-export default NewPostForm;
+export default PostForm;

@@ -1,4 +1,4 @@
-export const authUserSelector = (state) => state.auth.authUser;
+export const authUserSelector = (state) => state.authUser.authUser;
 
 export const postTypeSelector = (state) => state.postType.postType;
 

@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { allPostsActions } from '../../redux/allPostsSlice';
 import { paginatorHidingActions } from './../../redux/paginatorHidingSlice';
-import Form from '../../UI/dumbComponents/Form';
-import Input from '../../UI/dumbComponents/Input';
+import Form from '../../ui/dumbComponents/Form';
+import Input from '../../ui/dumbComponents/Input';
 import { searchPostsFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 import { currentPageSelector } from '../../selectors/selectors';
@@ -25,9 +25,7 @@ const SearchFilterForm = () => {
 
   const dispatch = useDispatch();
 
-  const searchInputHandler = useCallback((event) => {
-    setSearchValue(event.target.value.trim());
-  }, []);
+  const searchInputHandler = useCallback((event) => { setSearchValue(event.target.value.trim()); }, []);
 
   useEffect(() => {
     const getSearchResult = setTimeout(() => {

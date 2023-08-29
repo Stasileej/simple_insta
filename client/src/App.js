@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 import Login from './components/pages/login/Login';
 import MainPage from './components/pages/mainPage/MainPage';
-import Header from './components/UI/header/Header';
+import Header from './components/ui/header/Header';
 import Logout from './components/pages/logout/Logout';
 import NotFound from './components/pages/notFound/NotFound';
 import { authUserSelector } from './components/selectors/selectors';

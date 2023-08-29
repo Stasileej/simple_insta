@@ -1,18 +1,18 @@
 import { useSelector } from 'react-redux';
 
-import { modalComposerSelector } from '../../selectors/selectors';
+import { modalComposerSelector } from '../../../selectors/selectors';
 
-import Modal from '../modal/Modal';
+import Modal from '../Modal';
 import ModalWrapper from '../modalWrapper/ModalWrapper';
-import NewPostForm from '../../Forms/newPostForm/NewPostForm';
-import NewPostCommentForm from '../../Forms/newPostCommentForm/NewPostCommentForm';
+import PostForm from '../../../forms/postForm/PostForm';
+import CommentForm from '../../../forms/commentForm/CommentForm';
 
 const ModalComposer = () => {
   const { output: { header, component } } = useSelector(modalComposerSelector);
   
   const componentsMap = new Map([
-    ['NewPostForm', NewPostForm],
-    ['NewPostCommentForm', NewPostCommentForm],
+    ['PostForm', PostForm],
+    ['CommentForm', CommentForm],
   ]);
 
   const ModalComponent = componentsMap.get(component);

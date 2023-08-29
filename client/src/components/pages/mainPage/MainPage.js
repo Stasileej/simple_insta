@@ -4,10 +4,10 @@ import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import NewEditPostBtn from '../../cta/newEditPost/NewEditPostBtn';
-import SearchFilterForm from '../../Forms/searchFilterForm/SearchFilterForm';
-import CardList from '../../UI/cardList/CardList';
-import ModalComposer from '../../UI/ModalComposer/ModalComposer';
-import Pagination from '../../UI/pagination/Pagination';
+import SearchFilterForm from '../../forms/searchFilterForm/SearchFilterForm';
+import CardList from '../../ui/cardList/CardList';
+import ModalComposer from '../../ui/modal/ModalComposer/ModalComposer';
+import Pagination from '../../ui/pagination/Pagination';
 
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 

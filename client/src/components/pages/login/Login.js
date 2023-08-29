@@ -1,7 +1,6 @@
 import classes from './Login.module.css';
 
-import LoginForm from '../../Forms/loginForm/LoginForm';
-
+import LoginForm from '../../forms/loginForm/LoginForm';
 const Login = () => {
   return (
     <div className={classes.loginPage}>

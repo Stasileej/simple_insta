@@ -8,6 +8,11 @@ import { paginatorSelector } from '../../selectors/selectors';
 
 import Button from '../dumbComponents/Button';
 
+const text = {
+  prev: 'prev',
+  next: 'next'
+}
+
 const Pagination = () => {
   const paginator = useSelector(paginatorSelector);
 
@@ -28,11 +33,11 @@ const Pagination = () => {
   return (
     <div className={classes.paginator}>
       <Button disabled={paginator.pageCurrent === 1} onClick={onPrevHandler}>
-        prev
+        {text.prev}
       </Button>
       <span>{`${paginator.pageCurrent} / ${paginator.totalPages}`}</span>
       <Button disabled={paginator.pageCurrent === paginator.totalPages} onClick={onNextHandler}>
-        next
+        {text.next}
       </Button>
     </div>
   );

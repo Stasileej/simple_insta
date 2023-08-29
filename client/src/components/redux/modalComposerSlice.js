@@ -31,10 +31,10 @@ const modalComposerSlice = createSlice({
 
       if (type === TYPE_POST) {
         header = mode === MODE_NEW ? text.newPost : text.editPost;
-        component = mode === MODE_NEW || mode === MODE_EDIT ? 'NewPostForm' : null;
+        component = mode === MODE_NEW || mode === MODE_EDIT ? 'PostForm' : null;
       } else if (type === TYPE_COMMENT) {
         header = mode === MODE_NEW ? text.newComment : text.editComment;
-        component = mode === MODE_NEW || mode === MODE_EDIT ? 'NewPostCommentForm' : null;
+        component = mode === MODE_NEW || mode === MODE_EDIT ? 'CommentForm' : null;
       }
 
       state.visible = true;

@@ -3,10 +3,10 @@ import classes from './LoginForm.module.css';
 import { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Form from '../../UI/dumbComponents/Form';
-import Label from '../../UI/dumbComponents/Label';
-import Input from '../../UI/dumbComponents/Input';
-import Button from '../../UI/dumbComponents/Button';
+import Form from '../../ui/dumbComponents/Form';
+import Label from '../../ui/dumbComponents/Label';
+import Input from '../../ui/dumbComponents/Input';
+import Button from '../../ui/dumbComponents/Button';
 import { authUserSelector } from '../../selectors/selectors';
 import { loginAsync } from '../../redux/authActions';
 
@@ -24,9 +24,7 @@ const LoginForm = () => {
   const authUser = useSelector(authUserSelector);
   const dispatch = useDispatch();
 
-  const inputNameHandler = useCallback((event) => {
-    setLoginInput(event.target.value);
-  }, []);
+  const inputNameHandler = useCallback((event) => { setLoginInput(event.target.value); }, []);
 
   const loginHandler = useCallback(
     async (event) => {

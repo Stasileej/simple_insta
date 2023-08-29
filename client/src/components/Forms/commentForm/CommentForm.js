@@ -1,4 +1,4 @@
-import classes from './NewPostCommentForm.module.css';
+import classes from './CommentForm.module.css';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,10 +10,10 @@ import { authUserSelector, commentIdSelector, currentPageSelector, modalComposer
 import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
-import Form from '../../UI/dumbComponents/Form';
-import Label from '../../UI/dumbComponents/Label';
-import Button from '../../UI/dumbComponents/Button';
-import TextArea from '../../UI/dumbComponents/Textarea';
+import Form from '../../ui/dumbComponents/Form';
+import Label from '../../ui/dumbComponents/Label';
+import Button from '../../ui/dumbComponents/Button';
+import TextArea from '../../ui/dumbComponents/Textarea';
 import { modalComposerActions } from '../../redux/modalComposerSlice';
 
 const formText = {
@@ -30,7 +30,7 @@ const sendingInfoText = {
   sent: 'Data sent successfully',
 };
 
-const NewPostCommentForm = () => {
+const CommentForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
   const [comment, setComment] = useState('');
@@ -46,9 +46,7 @@ const NewPostCommentForm = () => {
 
   const isFormValid = useMemo(() => comment.trim().length === 0, [comment]);
 
-  const inputCommentHandler = useCallback((event) => {
-    setComment(event.target.value);
-  }, []);
+  const inputCommentHandler = useCallback((event) => { setComment(event.target.value); }, []);
 
   const submitHandler = useCallback(
     async (event) => {
@@ -57,14 +55,10 @@ const NewPostCommentForm = () => {
       setIsSubmitting(true);
 
       if (type === TYPE_COMMENT && mode === MODE_NEW) {
-        try {
-          await newCommentFetch(+commentId, comment, authUser);
-        } catch (error) {}
+        await newCommentFetch(+commentId, comment, authUser);
       }
       if (type === TYPE_COMMENT && mode === MODE_EDIT) {
-        try {
-          await editCommentFetch(commentId, comment);
-        } catch (error) {}
+        await editCommentFetch(commentId, comment);
       }
 
       dispatch(postIdActions.resetPostId());
@@ -120,4 +114,4 @@ const NewPostCommentForm = () => {
   );
 };
 
-export default NewPostCommentForm;
+export default CommentForm;
