@@ -10,18 +10,20 @@
   top: -100%;
   left: 0;
   transition: 0.25s;
+
+  &__close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    transition: 0.1s;
+
+    &:hover {
+      cursor: pointer;
+      transform: translateY(1px);
+    }
+  }
 }
 .comentsOn {
   background-color: rgba($white, 0.95);
   top: 0;
-}
-.close {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-  transition: 0.1s;
-}
-.close:hover {
-  cursor: pointer;
-  transform: translateY(1px);
 }

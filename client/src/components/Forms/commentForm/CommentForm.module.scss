@@ -7,23 +7,29 @@
   justify-content: center;
   margin-top: 2rem;
   width: 100%;
-}
 
-.postForm > *:not(:last-child) {
-  margin-bottom: 1.6rem;
-}
-.postForm label {
-  font-weight: 600;
-}
-.postForm textarea {
-  padding: 0.8rem;
-  border-radius: 5px;
-  border: 1px solid $fifth-color;
-  outline-color: $second-color;
-  width: 75%;
-  margin-bottom: 2.4rem !important;
-}
+  > *:not(:last-child) {
+    margin-bottom: 1.6rem;
+  }
+  
+  label {
+    font-weight: 600;
+  }
 
-.btnGroup button:not(:last-child) {
-  margin-right: 2rem;
+  textarea {
+    padding: 0.8rem;
+    border-radius: 5px;
+    border: 1px solid $fifth-color;
+    outline-color: $second-color;
+    width: 75%;
+    margin-bottom: 2.4rem !important;
+  }
+
+  .btnGroup {
+    button {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
 }

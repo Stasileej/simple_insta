@@ -55,11 +55,11 @@ const CardComment = ({ comment }) => {
   return (
     <>
       <div key={id} id={id} className={classes.comment}>
-        <p className={classes.commentText}>"{comment.text}"</p>
-        <div className={classes.nameDate}>
-          <p className={classes.username}>{comment.username}</p>
+        <p className={classes.comment__text}>"{comment.text}"</p>
+        <div className={classes.comment__nameDate}>
+          <p className={classes.comment__username}>{comment.username}</p>
           <p>{text.onDate}</p>
-          <p className={classes.date}>{new Date(+comment.date).toDateString()}</p>
+          <p className={classes.comment__date}>{new Date(+comment.date).toDateString()}</p>
         </div>
         <div className={classes.votes}>
           <Button

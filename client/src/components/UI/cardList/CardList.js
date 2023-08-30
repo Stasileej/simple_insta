@@ -5,7 +5,7 @@ import Post from '../post/Post';
 const CardList = ({ posts, authUser, fetchAllPosts, currentPage }) => {
   let cardsContent = posts.map((card) => {
     return (
-      <div className={classes.cardWrap} key={card.id}>
+      <div className={classes.cardsList__cardWrap} key={card.id}>
         <Post
           id={card.id}
           title={card.title}

@@ -23,7 +23,7 @@ const CardCommentsList = ({ comments, onClose, openClass }) => {
 
   return (
     <div className={`${classes.commentsList} ${openClass ? classes.comentsOn : ''}`}>
-      <span className={classes.close} onClick={closeCommentsHandler}>
+      <span className={classes.commentsList__close} onClick={closeCommentsHandler}>
         {closeComments}
       </span>
       {commentsList}

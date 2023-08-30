@@ -4,36 +4,39 @@
   padding: 1rem 0;
   border-top: 1px solid $second-color;
   border-bottom: 1px solid $second-color;
-}
-.comment:not(:last-child) {
-  margin-bottom: 0.5rem;
-}
-.comment button {
-  padding: 0.5rem 1rem;
-}
 
-.commentText {
-  padding-bottom: 1rem;
-  border-bottom: 1px solid $first-color;
-  font-style: italic;
-}
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
 
-.nameDate {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 1rem 0;
-}
-.nameDate > * {
-  font-size: 1.2rem;
-}
+  button {
+    padding: 0.5rem 1rem;
+  }
 
-.username {
-  font-weight: 600;
-}
+  &__text {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $first-color;
+    font-style: italic;
+  }
 
-.date {
-  font-style: italic;
+  &__nameDate {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1rem 0;
+
+    > * {
+      font-size: 1.2rem;
+    }
+  }
+
+  &__username {
+    font-weight: 600;
+  }
+
+  &__date {
+    font-style: italic;
+  }
 }
 
 .votes,

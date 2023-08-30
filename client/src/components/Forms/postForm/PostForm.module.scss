@@ -6,21 +6,31 @@
   align-items: start;
   justify-content: center;
   margin-top: 2rem;
-}
 
-.postForm > *:not(:last-child) {
-  margin-bottom: 1.6rem;
-}
-.postForm label {
-  font-weight: 600;
-}
-.postForm input[type="text"] {
-  padding: 0.8rem 1rem;
-  border-radius: 5px;
-  border: 1px solid $fifth-color;
-  outline-color: $second-color;
-}
+  > * {
+    &:not(:last-child) {
+      margin-bottom: 1.6rem;
+    }
+  }
 
-.btnGroup button:not(:last-child) {
-  margin-right: 2rem;
+  label {
+    font-weight: 600;
+  }
+
+  input {
+    &[type="text"] {
+      padding: 0.8rem 1rem;
+      border-radius: 5px;
+      border: 1px solid $fifth-color;
+      outline-color: $second-color;
+    }
+  }
+
+  .btnGroup {
+    button {
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
 }

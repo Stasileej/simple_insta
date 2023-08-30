@@ -6,36 +6,43 @@
   justify-content: center;
   align-items: center;
   margin: 5rem 3rem;
-}
 
-.logoutPage button {
-  margin-top: 2rem;
-}
+  button {
+    margin-top: 2rem;
+  }
 
-.logoutPage a:link,
-.logoutPage a:visited {
-  margin-top: 2rem;
-  color: $third-color !important;
-  font-weight: 600;
-  text-decoration: underline;
-  font-size: 1.8rem;
-  transition: 0.15s;
-  background-color: transparent;
-  position: relative;
-}
+  a {
+    &:link, &:visited {
+      margin-top: 2rem;
+      color: $third-color !important;
+      font-weight: 600;
+      text-decoration: underline;
+      font-size: 1.8rem;
+      transition: 0.15s;
+      background-color: transparent;
+      position: relative;
 
-.logoutPage a:link:hover,
-.logoutPage a:visited:hover,
-.logoutPage h3:hover {
-  transform: translateY(1px);
-  color: $fourth-color;
-  cursor: pointer;
-  filter: drop-shadow(0px 5px 2px rgba($fourth-color, 0.25));
-}
+      &:hover {
+        transform: translateY(1px);
+        color: $fourth-color;
+        cursor: pointer;
+        filter: drop-shadow(0px 5px 2px rgba($fourth-color, 0.25));
+      }
 
-.logoutPage a:link:active {
-  transform: translateY(2px);
-  color: $fourth-color;
-  cursor: pointer;
-  filter: drop-shadow(0px 3px 1px rgba($fourth-color, 0.4));
+      &:active {
+        transform: translateY(2px);
+        color: $fourth-color;
+        cursor: pointer;
+        filter: drop-shadow(0px 3px 1px rgba($fourth-color, 0.4));
+      }
+    }
+  }
+  h3 {
+    &:hover {
+      transform: translateY(1px);
+      color: $fourth-color;
+      cursor: pointer;
+      filter: drop-shadow(0px 5px 2px rgba($fourth-color, 0.25));
+    }
+  }
 }

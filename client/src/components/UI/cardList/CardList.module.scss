@@ -1,43 +1,50 @@
-@import '../../../styles/colors';
+@import "../../../styles/colors";
 
 .cardsList {
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   margin-bottom: 3rem;
-}
 
-.cardWrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 2.5rem;
-  border-radius: 5px;
-  background-color: $white;
-  box-shadow: 3px 3px 8px 0px rgba($fourth-color, 0.25);
-  margin: 0 auto;
-  width: 30vw;
-  transition: 0.2s;
-  position: relative;
-  overflow: hidden;
-}
-.cardWrap:hover {
-  box-shadow: 3px 3px 20px 0px rgba($fourth-color, 0.5);
-}
+  &__cardWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2.5rem;
+    border-radius: 5px;
+    background-color: $white;
+    box-shadow: 3px 3px 8px 0px rgba($fourth-color, 0.25);
+    margin: 0 auto;
+    width: 30vw;
+    transition: 0.2s;
+    position: relative;
+    overflow: hidden;
 
-.cardWrap > *:not(:last-child) {
-  margin-bottom: 2rem;
+    &:hover {
+      box-shadow: 3px 3px 20px 0px rgba($fourth-color, 0.5);
+    }
+
+    > * {
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
 }
 
 @media (max-width: 1024px) {
-  .cardWrap {
-    width: 45vw;
+  .cardsList {
+    &__cardWrap {
+      width: 45vw;
+    }
   }
 }
 
 @media (max-width: 639px) {
-  .cardWrap {
-    width: 80vw;
+  .cardsList {
+    &__cardWrap {
+      width: 80vw;
+    }
   }
 }
