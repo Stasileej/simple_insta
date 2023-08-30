@@ -21,7 +21,7 @@ const ModalComposer = () => {
     <Modal>
       <ModalWrapper>
         <h4>{header}</h4>
-        {<ModalComponent />}
+        <ModalComponent />
       </ModalWrapper>
     </Modal>
   );
