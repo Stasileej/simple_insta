@@ -1,4 +1,4 @@
-import classes from './Modal.module.css';
+import classes from './Modal.module.scss';
 
 import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';

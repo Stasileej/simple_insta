@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .postForm {
   display: flex;
   flex-direction: column;
@@ -15,8 +17,8 @@
 .postForm input[type="text"] {
   padding: 0.8rem 1rem;
   border-radius: 5px;
-  border: 1px solid #67C2D4;
-  outline-color: #a2a8d3;
+  border: 1px solid $fifth-color;
+  outline-color: $second-color;
 }
 
 .btnGroup button:not(:last-child) {

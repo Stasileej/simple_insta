@@ -1,4 +1,4 @@
-import classes from './Login.module.css';
+import classes from './Login.module.scss';
 
 import LoginForm from '../../forms/loginForm/LoginForm';
 const Login = () => {

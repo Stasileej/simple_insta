@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .header {
   width: 100%;
   min-height: 8rem;
@@ -5,17 +7,18 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #3988A4;
-  background: linear-gradient(135deg, #67C2D4 0%, #3988A4 100%);
+  background-color: $sixth-color;
+  background: linear-gradient(135deg, $fifth-color 0%, $sixth-color 100%);
+  
 }
 
 .header h3 {
-  color: #e0e0e0;
+  color: $text-color-white;
 }
 
 .header a:link,
 .header a:visited {
-  color: #e0e0e0;
+  color: $text-color-white;
   font-size: 1.8rem;
   font-weight: 600;
   transition: 0.15s;
@@ -26,15 +29,23 @@
 .header a:link:hover,
 .header a:visited:hover,
 .header h3:hover {
-  transform: translateY(1px);
-  color: #ffffff;
+  color: $white;
   cursor: pointer;
   filter: drop-shadow(0px 10px 3px #ffffff2d);
 }
 
 .header a:link:active {
-  transform: translateY(2px);
-  color: #ffffff;
+  transform: translateY(1px);
+  color: $white;
   cursor: pointer;
   filter: drop-shadow(0px 8px 2px #ffffff2d);
+}
+
+
+@media (max-width: 499px) {
+  .header {
+    flex-direction: column;
+    align-items: start;
+    gap: .7em;
+  }
 }

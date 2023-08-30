@@ -1,4 +1,4 @@
-import classes from './Post.module.css';
+import classes from './Post.module.scss';
 
 import { useState, useEffect, useMemo } from 'react';
 

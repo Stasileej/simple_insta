@@ -1,4 +1,4 @@
-import classes from './CommentForm.module.css';
+import classes from './CommentForm.module.scss';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

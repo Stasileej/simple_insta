@@ -1,16 +1,18 @@
+@import '../../../styles/colors';
+
 .commentsList {
   position: absolute;
   width: 100%;
   height: 100%;
   overflow-y: auto;
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgba($white, 0);
   padding: 4rem 2rem;
   top: -100%;
   left: 0;
   transition: 0.25s;
 }
 .comentsOn {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba($white, 0.95);
   top: 0;
 }
 .close {

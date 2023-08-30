@@ -1,0 +1,30 @@
+@import '../../../styles/colors';
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  transition: .5s;
+}
+
+.searchForm input[type="text"] {
+  font-size: 1.6rem;
+  color: $text-color-black;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  border: 1px solid $second-color;
+  outline-color: $second-color;
+}
+
+.searchForm input[type="text"]::placeholder {
+  color: $second-color;
+}
+
+@media (max-width: 499px) {
+  .searchForm{
+    order: 1;
+    align-self: flex-end;
+    width: 100%;
+  }
+}

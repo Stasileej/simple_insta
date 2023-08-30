@@ -1,4 +1,4 @@
-import classes from './PostForm.module.css';
+import classes from './PostForm.module.scss';
 
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

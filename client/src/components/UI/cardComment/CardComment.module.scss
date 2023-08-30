@@ -1,7 +1,9 @@
+@import '../../../styles/colors';
+
 .comment {
   padding: 1rem 0;
-  border-top: 1px solid #a2a8d3;
-  border-bottom: 1px solid #a2a8d3;
+  border-top: 1px solid $second-color;
+  border-bottom: 1px solid $second-color;
 }
 .comment:not(:last-child) {
   margin-bottom: 0.5rem;
@@ -12,7 +14,7 @@
 
 .commentText {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e7eaf6;
+  border-bottom: 1px solid $first-color;
   font-style: italic;
 }
 

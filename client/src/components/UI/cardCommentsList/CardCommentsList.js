@@ -1,4 +1,4 @@
-import classes from './CardCommentsList.module.css';
+import classes from './CardCommentsList.module.scss';
 
 import CardComment from '../cardComment/CardComment';
 import { useCallback } from 'react';

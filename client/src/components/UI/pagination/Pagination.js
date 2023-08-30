@@ -1,4 +1,4 @@
-import classes from './Pagination.module.css';
+import classes from './Pagination.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';

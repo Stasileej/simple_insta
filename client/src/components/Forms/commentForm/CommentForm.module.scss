@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .postForm {
   display: flex;
   flex-direction: column;
@@ -16,8 +18,8 @@
 .postForm textarea {
   padding: 0.8rem;
   border-radius: 5px;
-  border: 1px solid #67C2D4;
-  outline-color: #a2a8d3;
+  border: 1px solid $fifth-color;
+  outline-color: $second-color;
   width: 75%;
   margin-bottom: 2.4rem !important;
 }

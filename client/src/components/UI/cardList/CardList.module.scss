@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .cardsList {
   display: flex;
   flex-wrap: wrap;
@@ -12,8 +14,8 @@
   align-items: flex-start;
   padding: 2.5rem;
   border-radius: 5px;
-  background-color: #fff;
-  box-shadow: 3px 3px 8px 0px rgba(17, 63, 103, 0.25);
+  background-color: $white;
+  box-shadow: 3px 3px 8px 0px rgba($fourth-color, 0.25);
   margin: 0 auto;
   width: 30vw;
   transition: 0.2s;
@@ -21,7 +23,7 @@
   overflow: hidden;
 }
 .cardWrap:hover {
-  transform: scale(1.04);
+  box-shadow: 3px 3px 20px 0px rgba($fourth-color, 0.5);
 }
 
 .cardWrap > *:not(:last-child) {

@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .paginator {
   display: flex;
   align-items: center;
@@ -8,5 +10,5 @@
 }
 
 .paginator button {
-  background-color: #fff;
+  background-color: $white;
 }

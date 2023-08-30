@@ -1,4 +1,4 @@
-import classes from './CardList.module.css';
+import classes from './CardList.module.scss';
 
 import Post from '../post/Post';
 

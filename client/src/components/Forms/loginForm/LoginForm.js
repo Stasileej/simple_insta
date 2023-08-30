@@ -1,4 +1,4 @@
-import classes from './LoginForm.module.css';
+import classes from './LoginForm.module.scss';
 
 import { useState, useCallback, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

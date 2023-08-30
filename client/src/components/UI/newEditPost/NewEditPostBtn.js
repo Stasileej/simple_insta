@@ -1,9 +1,9 @@
-import classes from './NewEditPostBtn.module.css';
+import classes from './NewEditPostBtn.module.scss';
 
 import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Button from '../../ui/dumbComponents/Button';
+import Button from '../dumbComponents/Button';
 import { authUserSelector } from '../../selectors/selectors';
 import { MODE_NEW, TYPE_POST } from '../../data/apiData';
 import { modalComposerActions } from '../../redux/modalComposerSlice';

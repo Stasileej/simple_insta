@@ -1,4 +1,4 @@
-import classes from './Header.module.css';
+import classes from './Header.module.scss';
 
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 
 import { routes } from '../../data/routes';
 import { authUserSelector } from '../../selectors/selectors';
+import SearchFilterForm from '../../forms/searchFilterForm/SearchFilterForm';
 
 const headerTextContent = {
   title: 'ReactApp',
@@ -28,6 +29,7 @@ const Header = () => {
       <NavLink to='/'>
         <h3>{mainPageLinkText}</h3>
       </NavLink>
+      <SearchFilterForm />
       <NavLink to={loginLogoutLinkText.route}>{loginLogoutLinkText.loginLogout}</NavLink>
     </div>
   );

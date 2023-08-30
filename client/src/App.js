@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 
 import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';

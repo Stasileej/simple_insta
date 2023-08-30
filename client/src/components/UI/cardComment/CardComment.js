@@ -1,4 +1,4 @@
-import classes from './CardComment.module.css';
+import classes from './CardComment.module.scss';
 
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';

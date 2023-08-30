@@ -1,4 +1,4 @@
-import classes from './Logout.module.css';
+import classes from './Logout.module.scss';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';

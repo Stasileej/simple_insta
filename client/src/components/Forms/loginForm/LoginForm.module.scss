@@ -1,3 +1,5 @@
+@import '../../../styles/_colors';
+
 .formLogin {
   display: flex;
   flex-direction: column;
@@ -5,9 +7,9 @@
   align-items: flex-start;
   padding: 4rem 2rem;
   border-radius: 3px;
-  background-color: #3988A4;
-    background: linear-gradient(135deg, #67C2D4 0%, #3988A4 100%);
-  box-shadow: 3px 3px 8px 0px rgba(17, 63, 103, 0.25);
+  background-color: $sixth-color;
+    background: linear-gradient(135deg, $fifth-color 0%, $sixth-color 100%);
+  box-shadow: 3px 3px 8px 0px rgba($fourth-color, 0.25);
 }
 
 .formLogin > * {
@@ -17,25 +19,25 @@
   margin-bottom: 2rem;
 }
 .formLogin label {
-  color: #e0e0e0;
+  color: $text-color-white;
   font-weight: 600;
 }
 .formLogin input[type="text"] {
-  color: #262626;
+  color: $text-color-black;
   padding: 0.8rem 1rem;
   border-radius: 5px;
-  border: 1px solid #67C2D4;
-  outline-color: #a2a8d3;
+  border: 1px solid $fifth-color;
+  outline-color: $second-color;
 }
 .formLogin button {
   padding: 0.5rem 1.5rem;
   border: none;
-  background-color: #e7eaf6;
+  background-color: $first-color;
   transition: 0.1s;
   border-radius: 3px;
 }
 .formLogin button:not(:disabled):hover {
-  background-color: #e9ebf4;
+  background-color: $btn-bg-color;
   transform: translateY(1px);
   cursor: pointer;
 }

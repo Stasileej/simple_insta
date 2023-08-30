@@ -1,4 +1,4 @@
-import classes from './SearchFilterForm.module.css';
+import classes from './SearchFilterForm.module.scss';
 
 import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
