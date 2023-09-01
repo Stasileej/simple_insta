@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { MODE_EDIT, MODE_NEW, TYPE_COMMENT } from '../../data/apiData';
 import { postIdActions } from '../../redux/postIdSlice';
 import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
-import { authUserSelector, commentIdSelector, currentPageSelector, modalComposerSelector } from '../../selectors/selectors';
+import { authUserSelector, postIdSelector, currentPageSelector, modalComposerSelector } from '../../selectors/selectors';
 import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
@@ -36,9 +36,9 @@ const CommentForm = () => {
   const [comment, setComment] = useState('');
 
   const { type, mode } = useSelector(modalComposerSelector);
-  const authUser = useSelector(authUserSelector);
-  const commentId = useSelector(commentIdSelector);
-  const currentPage = useSelector(currentPageSelector);
+  const { authUser } = useSelector(authUserSelector);
+  const { postId: commentId } = useSelector(postIdSelector);
+  const { currentPage } = useSelector(currentPageSelector);
 
   const fetchAllPosts = useFetchAllPosts();
 

@@ -1,17 +1,13 @@
-export const authUserSelector = (state) => state.authUser.authUser;
+export const authUserSelector = (state) => state.authUser;
 
-export const postTypeSelector = (state) => state.postType.postType;
+export const postIdSelector = (state) => state.postId;
 
-export const commentIdSelector = (state) => state.postId.postId;
-
-export const allPostsSelector = (state) => state.allPosts.allPosts;
+export const allPostsSelector = (state) => state.allPosts;
 
 export const modalComposerSelector = (state) => state.modalComposer;
 
-export const modalSelector = (state) => state.modal.modal;
+export const currentPageSelector = (state) => state.currentPage;
 
-export const currentPageSelector = (state) => state.currentPage.currentPage;
+export const paginatorSelector = (state) => state.paginator;
 
-export const paginatorSelector = (state) => state.paginator.paginator;
-
-export const paginatorHidingSelector = (state) => state.paginatorHiding.paginatorHiding;
+export const paginatorHidingSelector = (state) => state.paginatorHiding;

@@ -17,8 +17,8 @@ const text = {
 };
 
 const Logout = () => {
-  const authUser = useSelector(authUserSelector);
-  const currentPage = useSelector(currentPageSelector);
+  const { authUser } = useSelector(authUserSelector);
+  const { currentPage } = useSelector(currentPageSelector);
 
   const fetchAllPosts = useFetchAllPosts();
 

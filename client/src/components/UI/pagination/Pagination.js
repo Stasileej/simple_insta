@@ -14,7 +14,7 @@ const text = {
 }
 
 const Pagination = () => {
-  const paginator = useSelector(paginatorSelector);
+  const { paginator } = useSelector(paginatorSelector);
 
   const dispatch = useDispatch();
 

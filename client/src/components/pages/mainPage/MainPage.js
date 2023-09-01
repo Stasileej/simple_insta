@@ -20,12 +20,12 @@ import {
 } from '../../selectors/selectors';
 
 const MainPage = () => {
-  const allPosts = useSelector(allPostsSelector);
+  const { allPosts } = useSelector(allPostsSelector);
   const { visible: modal } = useSelector(modalComposerSelector);
-  const paginator = useSelector(paginatorSelector);
-  const currentPage = useSelector(currentPageSelector);
-  const paginatorHiding = useSelector(paginatorHidingSelector);
-  const authUser = useSelector(authUserSelector);
+  const { paginator } = useSelector(paginatorSelector);
+  const { currentPage } = useSelector(currentPageSelector);
+  const { paginatorHiding } = useSelector(paginatorHidingSelector);
+  const { authUser } = useSelector(authUserSelector);
 
   const fetchAllPosts = useFetchAllPosts();
 

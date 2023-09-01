@@ -14,7 +14,7 @@ import { authUserSelector } from './components/selectors/selectors';
 import { routes } from './components/data/routes';
 
 function App() {
-  const authUser = useSelector(authUserSelector);
+  const { authUser } = useSelector(authUserSelector);
   const navigate = useNavigate();
 
   useEffect(() => {

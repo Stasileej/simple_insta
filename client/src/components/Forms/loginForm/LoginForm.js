@@ -21,7 +21,7 @@ const text = {
 const LoginForm = () => {
   const [loginInput, setLoginInput] = useState('');
 
-  const authUser = useSelector(authUserSelector);
+  const { authUser } = useSelector(authUserSelector);
   const dispatch = useDispatch();
 
   const inputNameHandler = useCallback((event) => { setLoginInput(event.target.value); }, []);

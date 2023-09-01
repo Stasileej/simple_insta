@@ -10,7 +10,7 @@ import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
 import {
   authUserSelector,
-  commentIdSelector,
+  postIdSelector,
   currentPageSelector,
   modalComposerSelector,
   paginatorSelector,
@@ -45,10 +45,10 @@ const PostForm = () => {
   const [filePreviewURL, setFilePreviewURL] = useState(null);
 
   const { type, mode } = useSelector(modalComposerSelector);
-  const authUser = useSelector(authUserSelector);
-  const paginator = useSelector(paginatorSelector);
-  const postId = useSelector(commentIdSelector);
-  const currentPage = useSelector(currentPageSelector);
+  const {authUser} = useSelector(authUserSelector);
+  const { paginator } = useSelector(paginatorSelector);
+  const { postId } = useSelector(postIdSelector);
+  const { currentPage } = useSelector(currentPageSelector);
 
   const fetchAllPosts = useFetchAllPosts();
 

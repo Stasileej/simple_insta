@@ -19,7 +19,7 @@ const formData = {
 const SearchFilterForm = () => {
   const [searchValue, setSearchValue] = useState('');
 
-  const currentPage = useSelector(currentPageSelector);
+  const { currentPage } = useSelector(currentPageSelector);
   
   const fetchAllPosts = useFetchAllPosts();
 

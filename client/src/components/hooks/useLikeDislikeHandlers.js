@@ -13,7 +13,7 @@ export function useLikeDislikeHandlers(authUser, id, likesProps, dislikesProps, 
   const [dislikes, setDisikes] = useState(dislikesProps);
 
   const fetchAllPosts = useFetchAllPosts();
-  const currentPage = useSelector(currentPageSelector);
+  const { currentPage } = useSelector(currentPageSelector);
 
   const dispatch = useDispatch();
 

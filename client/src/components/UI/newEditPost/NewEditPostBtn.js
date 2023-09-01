@@ -11,7 +11,7 @@ import { modalComposerActions } from '../../redux/modalComposerSlice';
 const text = 'New Posts';
 
 const NewEditPostBtn = () => {
-  const authUser = useSelector(authUserSelector);
+  const { authUser } = useSelector(authUserSelector);
 
   const dispatch = useDispatch();
 

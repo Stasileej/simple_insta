@@ -24,8 +24,8 @@ const text = {
 const CardComment = ({ comment }) => {
   const [isDel, setIsDel] = useState(false);
 
-  const authUser = useSelector(authUserSelector);
-  const currentPage = useSelector(currentPageSelector);
+  const { authUser } = useSelector(authUserSelector);
+  const { currentPage } = useSelector(currentPageSelector);
 
   const fetchAllPosts = useFetchAllPosts();
 

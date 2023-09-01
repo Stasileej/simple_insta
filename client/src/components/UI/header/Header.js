@@ -15,7 +15,7 @@ const headerTextContent = {
 };
 
 const Header = () => {
-  const authUser = useSelector(authUserSelector);
+  const { authUser } = useSelector(authUserSelector);
   const mainPageLinkText = useMemo(() => (!!authUser ? authUser : headerTextContent.title), [authUser]);
   const loginLogoutLinkText = useMemo(
     () =>
