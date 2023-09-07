@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { useDispatch } from 'react-redux';
 import { useCallback } from 'react';
 
-import { modalComposerActions } from '../../redux/modalComposerSlice';
+import { modalComposerActions } from '../../../redux/modalComposerSlice';
 
 const Backdrop = () => {
   const dispatch = useDispatch();

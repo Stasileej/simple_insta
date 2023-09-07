@@ -2,9 +2,9 @@ import classes from './Post.module.scss';
 
 import { useState, useEffect, useMemo } from 'react';
 
-import { postDeleteFetch, postVotesFetch } from '../../data/requestsAPI';
-import { useLikeDislikeHandlers } from '../../hooks/useLikeDislikeHandlers';
-import { usePostCommentHandlers } from '../../hooks/usePostCommentHandlers';
+import { postDeleteFetch, postVotesFetch } from '../../../data/requestsAPI';
+import { useLikeDislikeHandlers } from '../../../hooks/useLikeDislikeHandlers';
+import { usePostCommentHandlers } from '../../../hooks/usePostCommentHandlers';
 
 import CardCommentsList from '../cardCommentsList/CardCommentsList';
 

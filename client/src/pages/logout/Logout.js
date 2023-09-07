@@ -8,7 +8,7 @@ import { authActions } from '../../redux/authSlice';
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
 
-import Button from '../../ui/dumbComponents/Button';
+import Button from '../../components/ui/dumbComponents/Button';
 
 const text = {
   user: 'User',

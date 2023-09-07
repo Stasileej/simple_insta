@@ -7,8 +7,8 @@ import Form from '../../ui/dumbComponents/Form';
 import Label from '../../ui/dumbComponents/Label';
 import Input from '../../ui/dumbComponents/Input';
 import Button from '../../ui/dumbComponents/Button';
-import { authUserSelector } from '../../selectors/selectors';
-import { loginAsync } from '../../redux/authActions';
+import { authUserSelector } from '../../../selectors/selectors';
+import { loginAsync } from '../../../redux/authActions';
 
 const text = {
   inputNameLabel: 'Enter your name',

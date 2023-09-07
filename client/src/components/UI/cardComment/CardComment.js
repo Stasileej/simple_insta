@@ -3,11 +3,11 @@ import classes from './CardComment.module.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-import { authUserSelector, currentPageSelector } from '../../selectors/selectors';
-import { commentDeleteFetch, commentVotesFetch } from '../../data/requestsAPI';
-import { useLikeDislikeHandlers } from '../../hooks/useLikeDislikeHandlers';
-import { usePostCommentHandlers } from '../../hooks/usePostCommentHandlers';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+import { authUserSelector, currentPageSelector } from '../../../selectors/selectors';
+import { commentDeleteFetch, commentVotesFetch } from '../../../data/requestsAPI';
+import { useLikeDislikeHandlers } from '../../../hooks/useLikeDislikeHandlers';
+import { usePostCommentHandlers } from '../../../hooks/usePostCommentHandlers';
+import useFetchAllPosts from '../../../hooks/useFetchAllPosts';
 
 import Button from '../dumbComponents/Button';
 

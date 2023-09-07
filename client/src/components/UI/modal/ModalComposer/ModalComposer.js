@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { modalComposerSelector } from '../../../selectors/selectors';
+import { modalComposerSelector } from '../../../../selectors/selectors';
 
 import Modal from '../Modal';
 import ModalWrapper from '../modalWrapper/ModalWrapper';

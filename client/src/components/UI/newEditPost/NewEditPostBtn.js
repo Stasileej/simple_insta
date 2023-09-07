@@ -4,9 +4,9 @@ import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../dumbComponents/Button';
-import { authUserSelector } from '../../selectors/selectors';
-import { MODE_NEW, TYPE_POST } from '../../data/apiData';
-import { modalComposerActions } from '../../redux/modalComposerSlice';
+import { authUserSelector } from '../../../selectors/selectors';
+import { MODE_NEW, TYPE_POST } from '../../../data/apiData';
+import { modalComposerActions } from '../../../redux/modalComposerSlice';
 
 const text = 'New Posts';
 

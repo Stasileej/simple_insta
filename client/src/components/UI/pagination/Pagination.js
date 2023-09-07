@@ -3,8 +3,8 @@ import classes from './Pagination.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useCallback } from 'react';
 
-import { currentPageActions } from './../../redux/currentPageSlice';
-import { paginatorSelector } from '../../selectors/selectors';
+import { currentPageActions } from '../../../redux/currentPageSlice';
+import { paginatorSelector } from '../../../selectors/selectors';
 
 import Button from '../dumbComponents/Button';
 

@@ -3,18 +3,18 @@ import classes from './CommentForm.module.scss';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MODE_EDIT, MODE_NEW, TYPE_COMMENT } from '../../data/apiData';
-import { postIdActions } from '../../redux/postIdSlice';
-import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
-import { authUserSelector, postIdSelector, currentPageSelector, modalComposerSelector } from '../../selectors/selectors';
-import { editCommentFetch, newCommentFetch } from '../../data/requestsAPI';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
+import { MODE_EDIT, MODE_NEW, TYPE_COMMENT } from '../../../data/apiData';
+import { postIdActions } from '../../../redux/postIdSlice';
+import { paginatorHidingActions } from '../../../redux/paginatorHidingSlice';
+import { authUserSelector, postIdSelector, currentPageSelector, modalComposerSelector } from '../../../selectors/selectors';
+import { editCommentFetch, newCommentFetch } from '../../../data/requestsAPI';
+import useFetchAllPosts from '../../../hooks/useFetchAllPosts';
 
 import Form from '../../ui/dumbComponents/Form';
 import Label from '../../ui/dumbComponents/Label';
 import Button from '../../ui/dumbComponents/Button';
 import TextArea from '../../ui/dumbComponents/Textarea';
-import { modalComposerActions } from '../../redux/modalComposerSlice';
+import { modalComposerActions } from '../../../redux/modalComposerSlice';
 
 const formText = {
   textareaCommentLabel: 'Comment:',

@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 
-import Login from './components/pages/login/Login';
-import MainPage from './components/pages/mainPage/MainPage';
+import Login from './pages/login/Login';
+import MainPage from './pages/mainPage/MainPage';
 import Header from './components/ui/header/Header';
-import Logout from './components/pages/logout/Logout';
-import NotFound from './components/pages/notFound/NotFound';
-import { authUserSelector } from './components/selectors/selectors';
+import Logout from './pages/logout/Logout';
+import NotFound from './pages/notFound/NotFound';
+import { authUserSelector } from './selectors/selectors';
 
-import { routes } from './components/data/routes';
+import { routes } from './data/routes';
 
 function App() {
   const { authUser } = useSelector(authUserSelector);

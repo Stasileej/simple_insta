@@ -3,24 +3,24 @@ import classes from './PostForm.module.scss';
 import { useEffect, useState, useMemo, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { MODE_EDIT, MODE_NEW, TYPE_POST } from '../../data/apiData';
-import { postIdActions } from '../../redux/postIdSlice';
-import { editPostFetch, imagePostFetch, newPostFetch } from '../../data/requestsAPI';
-import useFetchAllPosts from '../../hooks/useFetchAllPosts';
-import { paginatorHidingActions } from '../../redux/paginatorHidingSlice';
+import { MODE_EDIT, MODE_NEW, TYPE_POST } from '../../../data/apiData';
+import { postIdActions } from '../../../redux/postIdSlice';
+import { editPostFetch, imagePostFetch, newPostFetch } from '../../../data/requestsAPI';
+import useFetchAllPosts from '../../../hooks/useFetchAllPosts';
+import { paginatorHidingActions } from '../../../redux/paginatorHidingSlice';
 import {
   authUserSelector,
   postIdSelector,
   currentPageSelector,
   modalComposerSelector,
   paginatorSelector,
-} from '../../selectors/selectors';
+} from '../../../selectors/selectors';
 
 import Form from '../../ui/dumbComponents/Form';
 import Label from '../../ui/dumbComponents/Label';
 import Input from '../../ui/dumbComponents/Input';
 import Button from '../../ui/dumbComponents/Button';
-import { modalComposerActions } from '../../redux/modalComposerSlice';
+import { modalComposerActions } from '../../../redux/modalComposerSlice';
 
 const formText = {
   inputTitleLabel: 'Title:',

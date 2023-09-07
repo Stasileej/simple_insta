@@ -4,8 +4,8 @@ import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { routes } from '../../data/routes';
-import { authUserSelector } from '../../selectors/selectors';
+import { routes } from '../../../data/routes';
+import { authUserSelector } from '../../../selectors/selectors';
 import SearchFilterForm from '../../forms/searchFilterForm/SearchFilterForm';
 
 const headerTextContent = {

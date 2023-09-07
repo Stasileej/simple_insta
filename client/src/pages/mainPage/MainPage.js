@@ -3,10 +3,10 @@ import classes from './MainPage.module.scss';
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import NewEditPostBtn from '../../ui/newEditPost/NewEditPostBtn';
-import CardList from '../../ui/cardList/CardList';
-import ModalComposer from '../../ui/modal/ModalComposer/ModalComposer';
-import Pagination from '../../ui/pagination/Pagination';
+import NewEditPostBtn from '../../components/ui/newEditPost/NewEditPostBtn';
+import CardList from '../../components/ui/cardList/CardList';
+import ModalComposer from '../../components/ui/modal/ModalComposer/ModalComposer';
+import Pagination from '../../components/ui/pagination/Pagination';
 
 import useFetchAllPosts from '../../hooks/useFetchAllPosts';
 
