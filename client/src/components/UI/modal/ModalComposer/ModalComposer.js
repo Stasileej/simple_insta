@@ -7,15 +7,15 @@ import ModalWrapper from '../modalWrapper/ModalWrapper';
 import PostForm from '../../../forms/postForm/PostForm';
 import CommentForm from '../../../forms/commentForm/CommentForm';
 
+const COMPONENTS = {
+  PostForm,
+  CommentForm,
+};
+
 const ModalComposer = () => {
   const { output: { header, component } } = useSelector(modalComposerSelector);
   
-  const componentsMap = new Map([
-    ['PostForm', PostForm],
-    ['CommentForm', CommentForm],
-  ]);
-
-  const ModalComponent = componentsMap.get(component);
+  const ModalComponent = COMPONENTS[component];
 
   return (
     <Modal>
